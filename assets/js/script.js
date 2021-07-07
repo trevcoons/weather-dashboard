@@ -22,3 +22,31 @@ var formHandler = function(event) {
     };
 };
 
+// uses 'current weather api' to fetch latitude and longitude
+var getCoords = function(city) {
+    var currentWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
+
+    fetch(currentWeatherApi).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                var lon = data.coord['lon'];
+                var lat = data.coord['lat'];
+                getCityForecast(city, lon, lat);
+
+                // saves searched city and refreshes recent city list
+                if (document.querySelector('.city-list')) {
+                    document.querySelector('.city-list').remove();
+                }
+
+                saveCity(city);
+                loadCities();
+            });
+        } else {
+            alert(`Error: ${response.statusText}`)
+        }
+    })
+    .catch(function(error) {
+        alert('Unable to load weather.');
+    })
+}
+
