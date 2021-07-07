@@ -29,7 +29,36 @@
                 <h3 class="card-header text-uppercase bg-secondary text-light">Recent Cities</h3>
             </div>
         </div>
+        <div class="col-12 col-md-9 city-forecast hide">
+            <!-- city's current forecast -->
+            <div class="card bg-color-light mt-4 mt-md-0">
+                <h3 class="card-header text-uppercase bg-secondary text-light">Today's Forecast</h3>
+                <div class="container">
+                    <div class="row">
+                        <h4 class="ml-2">
+                            <img class="weather-icon" id="today-icon" />
+                            <span class="align-middle" id="city-name">City Name</span>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <p class="pl-3">Current Temperature: <span id="current-temp"></span> &deg;F</p>
+                            <p class="pl-3">Feels Like: <span id="current-feels-like"></span> &deg;F</p>
+                            <p class="pl-3">Condition: <span id="current-condition"></span></p>
+                            <p class="pl-3">Humidity: <span id="current-humidity"></span>%</p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <p class="pl-3">High: <span id="current-high"></span> &deg;F</p>
+                            <p class="pl-3">Low: <span id="current-low"></span> &deg;F</p>
+                            <p class="pl-3">Wind Speed: <span id="current-wind-speed"></span> MPH</p>
+                            <p class="pl-3">UV Index: <span id="current-uvi"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+           
+            </div>
         
         </div>
     </main>
