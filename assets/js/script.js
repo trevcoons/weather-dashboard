@@ -125,3 +125,38 @@ var currentForecast = function(forecast) {
     }
 }
 
+// display five day forecast
+var fiveDayForecast = function(forecast) { 
+    
+    for (var i = 1; i < 6; i++) {
+        var dateP = document.querySelector('#date-' + i);
+        dateP.textContent = moment().add(i, 'days').format('M/D/YYYY');
+
+        var iconImg = document.querySelector('#icon-' + i);
+        var iconCode = forecast.daily[i].weather[0].icon;
+        iconImg.setAttribute('src', `http://openweathermap.org/img/wn/${iconCode}.png`);
+        iconImg.setAttribute('alt', forecast.daily[i].weather[0].main);
+
+        displayTemp('#temp-' + i, forecast.daily[i].temp.day);
+        displayTemp('#high-' + i, forecast.daily[i].temp.max);
+        displayTemp('#low-' + i, forecast.daily[i].temp.min);
+
+        var humiditySpan = document.querySelector('#humidity-' + i);
+        humiditySpan.textContent = forecast.daily[i].humidity;
+    }
+}
+
+// saves cities into local storage
+var saveCity = function(city) {
+
+    // prevents duplicate city from being saved and moves it to end of array
+    for (var i = 0; i < cityArr.length; i++) {
+        if (city === cityArr[i]) {
+            cityArr.splice(i, 1);
+        }
+    }
+
+    cityArr.push(city);
+    localStorage.setItem('cities', JSON.stringify(cityArr));
+}
+
